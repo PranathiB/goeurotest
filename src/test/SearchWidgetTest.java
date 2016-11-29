@@ -24,7 +24,7 @@ public class SearchWidgetTest {
     }
 
     @Test
-    public void verifyOneWayTripResults(){
+    public void verifyOneWayTripPricesAreSorted(){
         goEuroHomePage = new GoEuroHomePage(driver);
         goEuroHomePage.go();
         searchWidget = new SearchWidget(driver);
