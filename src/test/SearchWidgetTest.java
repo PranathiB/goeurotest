@@ -1,9 +1,12 @@
+import com.google.common.collect.Ordering;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import pages.GoEuroHomePage;
+import pages.SearchResultsPage;
 import pages.SearchWidget;
 
 /**
@@ -31,11 +34,14 @@ public class SearchWidgetTest {
 
         searchWidget.uncheckAirbnbOption();
         searchWidget.clickOnSearchButton();
+
+        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
+        Assert.assertTrue(Ordering.natural().isOrdered(searchResultsPage.getAllPrices()));
     }
 
     @AfterClass
     public static void tearDown() throws Exception {
-//        driver.close();
+        driver.close();
     }
 
 }
