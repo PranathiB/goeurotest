@@ -6,9 +6,6 @@ import org.openqa.selenium.WebElement;
 
 import java.util.List;
 
-/**
- * Created by pranathb on 11/29/16.
- */
 public class SearchWidget {
     WebDriver driver;
     By oneWayTripButton = By.id("trip_type_2");

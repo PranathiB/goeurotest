@@ -2,12 +2,9 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 
-/**
- * Created by pranathb on 11/29/16.
- */
 public class GoEuroHomePage {
+    private final String URL = "http://www.goeuro.es";
     WebDriver driver;
-    String URL = "http://www.goeuro.es";
     public GoEuroHomePage(WebDriver driver){
         this.driver = driver;
     }

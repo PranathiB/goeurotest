@@ -9,24 +9,21 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Created by pranathb on 11/29/16.
- */
 public class SearchResultsPage {
     WebDriver driver;
-
     By searchResultsPrice = By.className("Result__priceMain___25qv5");
 
     public SearchResultsPage(WebDriver driver){
         this.driver = driver;
     }
 
-    public void waitForSearchResults() {
+    private void waitForSearchResultsToDisplay() {
         WebDriverWait wait = new WebDriverWait(driver, 10);
         wait.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(searchResultsPrice));
     }
 
-    public List<Integer> getAllPrices(){
+    public List<Integer> getPricesOfAvailableOptions(){
+        waitForSearchResultsToDisplay();
         List<WebElement> elementList =driver.findElements(searchResultsPrice);
         List<Integer> pricesList = new ArrayList<Integer>();
         for(WebElement element : elementList){

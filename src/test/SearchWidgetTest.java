@@ -10,13 +10,11 @@ import pages.SearchResultsPage;
 import pages.SearchWidget;
 import pages.GoEuroHomePage;
 
-/**
- * Created by pranathb on 11/29/16.
- */
 public class SearchWidgetTest {
     private static WebDriver driver;
     private GoEuroHomePage goEuroHomePage;
     private SearchWidget searchWidget;
+    private SearchResultsPage searchResultsPage;
 
     @BeforeClass
     public static void setUp() throws Exception {
@@ -28,15 +26,21 @@ public class SearchWidgetTest {
 
     @Test
     public void verifyOneWayTripPricesAreSorted(){
+        final String ORIGIN_CITY="Berlín";
+        final String DESTINATION_CITY="Praga";
+        // Navigate to the basepage
         goEuroHomePage = new GoEuroHomePage(driver);
         goEuroHomePage.go();
+        // Enter the search parameters on the search widget
         searchWidget = new SearchWidget(driver);
-        searchWidget.enterOriginCity("Berlín");
-        searchWidget.enterDestinationCity("Praga");
+        searchWidget.enterOriginCity(ORIGIN_CITY);
+        searchWidget.enterDestinationCity(DESTINATION_CITY);
         searchWidget.uncheckAirbnbOption();
         searchWidget.clickOnSearchButton();
-        SearchResultsPage searchResultsPage = new SearchResultsPage(driver);
-        Assert.assertTrue(Ordering.natural().isOrdered(searchResultsPage.getAllPrices()));
+        //Get the prices of the search results
+        searchResultsPage = new SearchResultsPage(driver);
+        // Verify that the prices are sorted
+        Assert.assertTrue(Ordering.natural().isOrdered(searchResultsPage.getPricesOfAvailableOptions()));
     }
 
     @AfterClass
