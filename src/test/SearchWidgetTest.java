@@ -6,9 +6,9 @@ import org.junit.Test;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import java.pages.SearchResultsPage;
-import java.pages.SearchWidget;
-import java.pages.GoEuroHomePage;
+import pages.SearchResultsPage;
+import pages.SearchWidget;
+import pages.GoEuroHomePage;
 
 /**
  * Created by pranathb on 11/29/16.
