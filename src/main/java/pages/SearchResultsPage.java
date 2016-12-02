@@ -1,4 +1,4 @@
-package pages;
+package java.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -30,7 +30,6 @@ public class SearchResultsPage {
         List<WebElement> elementList =driver.findElements(searchResultsPrice);
         List<Integer> pricesList = new ArrayList<Integer>();
         for(WebElement element : elementList){
-            System.out.println(element.getText());
             pricesList.add(Integer.parseInt(element.getText()));
         }
         return pricesList;
